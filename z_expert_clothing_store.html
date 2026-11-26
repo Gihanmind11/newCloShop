@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Z-EXPERT CLOTHING | Sri Lankan Streetwear & Custom DTF</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Space Grotesk (Bold Streetwear Display) & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              accent: '#E11D48', // Crisp Crimson Streetwear Accent
+              dark: '#09090B',
+              cardDark: '#121215',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-zinc-50 text-zinc-900 dark:bg-brand-dark dark:text-zinc-100 transition-colors duration-300 antialiased selection:bg-rose-600 selection:text-white">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-zinc-950 dark:bg-zinc-900 text-white text-xs sm:text-sm py-2.5 px-4 text-center font-medium tracking-wide border-b border-zinc-800">
+    <span>🇱🇰 ISLANDWIDE CASH ON DELIVERY AVAILABLE • FREE SHIPPING ON ORDERS OVER LKR 12,000</span>
+  </div>
+
+  <!-- Sticky Navigation Header -->
+  <header class="sticky top-0 z-40 bg-white/85 dark:bg-brand-dark/85 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-lg flex items-center justify-center font-display font-bold text-xl tracking-tighter group-hover:bg-rose-600 group-hover:text-white transition-colors">
+          Z
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-bold text-lg sm:text-xl tracking-tight leading-none">Z-EXPERT</span>
+          <span class="text-[10px] font-semibold tracking-[0.25em] text-zinc-500 dark:text-zinc-400 uppercase">Clothing Co.</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-600 dark:text-zinc-300">
+        <a href="#collection" onclick="filterProducts('All')" class="hover:text-zinc-950 dark:hover:text-white transition-colors">Shop All</a>
+        <a href="#collection" onclick="filterProducts('T-Shirts')" class="hover:text-zinc-950 dark:hover:text-white transition-colors">T-Shirts</a>
+        <a href="#collection" onclick="filterProducts('Hoodies')" class="hover:text-zinc-950 dark:hover:text-white transition-colors">Hoodies</a>
+        <a href="#collection" onclick="filterProducts('Streetwear')" class="hover:text-zinc-950 dark:hover:text-white transition-colors">Streetwear</a>
+        <a href="#collection" onclick="filterProducts('Custom DTF Prints')" class="hover:text-rose-600 dark:hover:text-rose-500 transition-colors font-semibold">Custom DTF Prints</a>
+      </nav>
+
+      <!-- Right Actions: Theme Toggle & Cart -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Light/Dark Theme Switcher -->
+        <button id="themeToggle" aria-label="Toggle Dark Mode" class="p-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">
+          <i id="themeIcon" class="fa-solid fa-moon text-base"></i>
+        </button>
+
+        <!-- Cart Button -->
+        <button onclick="toggleCart(true)" class="relative flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-semibold text-sm hover:bg-rose-600 dark:hover:bg-rose-600 dark:hover:text-white transition-all shadow-sm">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="hidden sm:inline">Cart</span>
+          <span id="cartBadge" class="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 text-xs font-bold rounded-full bg-rose-600 text-white">
+            0
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-24">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        
+        <!-- Hero Text Content -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-200/70 dark:bg-zinc-800/90 text-xs font-semibold tracking-wider uppercase text-zinc-800 dark:text-zinc-200">
+            <span class="w-2 h-2 rounded-full bg-rose-600 animate-pulse"></span>
+            Drop 04 — Colombo Street Culture
+          </div>
+
+          <h1 class="font-display font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05]">
+            ENGINEERED FOR THE <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-orange-500">STREETS</span> OF LANKA.
+          </h1>
+
+          <p class="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            Heavyweight 240 GSM combed cotton, oversized silhouettes, and high-definition custom DTF prints built to last. Designed in Sri Lanka with fast islandwide Cash-on-Delivery.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="#collection" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold text-sm tracking-wide uppercase hover:bg-rose-600 dark:hover:bg-rose-600 dark:hover:text-white transition-all shadow-lg shadow-zinc-900/10 text-center">
+              Explore Collection
+            </a>
+            <a href="#collection" onclick="filterProducts('Custom DTF Prints')" class="w-full sm:w-auto px-8 py-4 rounded-xl border border-zinc-300 dark:border-zinc-700 font-bold text-sm tracking-wide uppercase hover:border-zinc-900 dark:hover:border-white transition-all text-center">
+              Custom DTF Studio
+            </a>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-zinc-200 dark:border-zinc-800/80 max-w-lg mx-auto lg:mx-0 text-left">
+            <div>
+              <p class="font-display font-bold text-lg sm:text-xl">240 GSM</p>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400">Heavyweight Cotton</p>
+            </div>
+            <div>
+              <p class="font-display font-bold text-lg sm:text-xl">2–4 Days</p>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400">Islandwide Delivery</p>
+            </div>
+            <div>
+              <p class="font-display font-bold text-lg sm:text-xl">100% COD</p>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400">Pay at Doorstep</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual Showcase -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative rounded-2xl overflow-hidden bg-zinc-200 dark:bg-zinc-900 aspect-[4/5] shadow-2xl border border-zinc-200 dark:border-zinc-800 group">
+            <img 
+              src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=900&q=80" 
+              onerror="this.src='https://placehold.co/800x1000/18181b/ffffff?text=Z-EXPERT+DROP+04'"
+              alt="Z-Expert Streetwear Lookbook" 
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 flex items-end justify-between text-white">
+              <div>
+                <span class="px-2.5 py-1 rounded-md bg-rose-600 text-[11px] font-bold uppercase tracking-wider">Featured Piece</span>
+                <h3 class="font-display font-bold text-xl mt-1.5">Obsidian Heavyweight Hoodie</h3>
+                <p class="text-sm text-zinc-300">LKR 6,850</p>
+              </div>
+              <a href="#collection" class="w-11 h-11 rounded-xl bg-white text-zinc-900 flex items-center justify-center hover:bg-rose-600 hover:text-white transition-colors">
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Catalog Section -->
+  <main id="collection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+    
+    <!-- Section Header & Filter Tabs -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+      <div>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight">LATEST DROPS</h2>
+        <p class="text-zinc-500 dark:text-zinc-400 text-sm sm:text-base mt-1">Select your fit, choose your size, and order via Cash on Delivery.</p>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div id="categoryFilters" class="flex flex-wrap gap-2">
+        <button data-category="All" onclick="filterProducts('All')" class="filter-btn active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">
+          All Drops
+        </button>
+        <button data-category="T-Shirts" onclick="filterProducts('T-Shirts')" class="filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-zinc-200/70 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-300 dark:hover:bg-zinc-700">
+          T-Shirts
+        </button>
+        <button data-category="Hoodies" onclick="filterProducts('Hoodies')" class="filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-zinc-200/70 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-300 dark:hover:bg-zinc-700">
+          Hoodies
+        </button>
+        <button data-category="Streetwear" onclick="filterProducts('Streetwear')" class="filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-zinc-200/70 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-300 dark:hover:bg-zinc-700">
+          Streetwear
+        </button>
+        <button data-category="Custom DTF Prints" onclick="filterProducts('Custom DTF Prints')" class="filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-zinc-200/70 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-300 dark:hover:bg-zinc-700">
+          Custom DTF Prints
+        </button>
+      </div>
+    </div>
+
+    <!-- Responsive Product Grid -->
+    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+      <!-- Products dynamically injected via JS -->
+    </div>
+
+    <!-- Custom DTF Bulk / Personal Print Banner -->
+    <div class="mt-20 rounded-3xl bg-zinc-900 dark:bg-zinc-900/90 border border-zinc-800 p-8 sm:p-12 text-white flex flex-col lg:flex-row items-center justify-between gap-8 relative overflow-hidden">
+      <div class="space-y-3 max-w-2xl relative z-10 text-center lg:text-left">
+        <span class="inline-block px-3 py-1 rounded-lg bg-rose-600/20 text-rose-400 border border-rose-500/30 text-xs font-bold uppercase tracking-wider">
+          Z-Expert Print Lab
+        </span>
+        <h3 class="font-display font-bold text-2xl sm:text-4xl">GOT YOUR OWN ARTWORK?</h3>
+        <p class="text-zinc-400 text-sm sm:text-base">
+          Order our Custom DTF Print Tees or Hoodies! Once you place your Cash-on-Delivery order, our Colombo design team reaches out on WhatsApp to confirm your high-res artwork before pressing.
+        </p>
+      </div>
+      <button onclick="filterProducts('Custom DTF Prints'); document.getElementById('collection').scrollIntoView({behavior:'smooth'})" class="relative z-10 px-7 py-4 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm uppercase tracking-wider transition-all shrink-0 shadow-lg shadow-rose-600/25">
+        Shop Custom DTF
+      </button>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-brand-dark py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-lg flex items-center justify-center font-display font-bold text-lg">Z</div>
+        <span class="font-display font-bold text-lg tracking-tight">Z-EXPERT CLOTHING</span>
+      </div>
+      <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 text-center">
+        © 2026 Z-Expert Clothing Sri Lanka. All prices in LKR. Islandwide COD Delivery.
+      </p>
+      <div class="flex items-center gap-4 text-zinc-500 dark:text-zinc-400">
+        <a href="#" aria-label="Instagram" class="hover:text-rose-600 transition-colors"><i class="fa-brands fa-instagram text-lg"></i></a>
+        <a href="#" aria-label="TikTok" class="hover:text-rose-600 transition-colors"><i class="fa-brands fa-tiktok text-lg"></i></a>
+        <a href="#" aria-label="WhatsApp" class="hover:text-rose-600 transition-colors"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- SLIDE-OVER SHOPPING CART DRAWER            -->
+  <!-- ========================================== -->
+  <div id="cartOverlay" onclick="toggleCart(false)" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden opacity-0 transition-opacity duration-300"></div>
+  
+  <aside id="cartDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white dark:bg-brand-cardDark border-l border-zinc-200 dark:border-zinc-800 z-50 transform translate-x-full transition-transform duration-300 flex flex-col shadow-2xl">
+    <!-- Drawer Header -->
+    <div class="p-5 sm:p-6 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <i class="fa-solid fa-bag-shopping text-rose-600 text-lg"></i>
+        <h3 class="font-display font-bold text-xl">YOUR CART</h3>
+        <span id="drawerItemCount" class="text-xs font-semibold px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">0 items</span>
+      </div>
+      <button onclick="toggleCart(false)" aria-label="Close Cart" class="p-2 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-500 transition-colors">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+
+    <!-- Free Shipping Progress -->
+    <div class="px-5 py-3 bg-zinc-100/80 dark:bg-zinc-900/80 border-b border-zinc-200 dark:border-zinc-800 text-xs">
+      <p id="shippingProgressText" class="font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">Add LKR 12,000 for FREE Islandwide Delivery!</p>
+      <div class="w-full h-1.5 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden">
+        <div id="shippingProgressBar" class="h-full bg-rose-600 transition-all duration-300" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items Container -->
+    <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-5 sm:p-6 space-y-4">
+      <!-- Empty state or items injected via JS -->
+    </div>
+
+    <!-- Drawer Footer / Summary -->
+    <div id="cartFooter" class="p-5 sm:p-6 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 space-y-4 hidden">
+      <div class="space-y-1.5 text-sm">
+        <div class="flex justify-between text-zinc-500 dark:text-zinc-400">
+          <span>Subtotal</span>
+          <span id="cartSubtotal" class="font-medium text-zinc-900 dark:text-zinc-100">LKR 0</span>
+        </div>
+        <div class="flex justify-between text-zinc-500 dark:text-zinc-400">
+          <span>Islandwide Courier (COD)</span>
+          <span id="cartShipping" class="font-medium text-zinc-900 dark:text-zinc-100">LKR 450</span>
+        </div>
+        <div class="flex justify-between text-base font-bold pt-2 border-t border-zinc-200 dark:border-zinc-800">
+          <span>Total Payable (COD)</span>
+          <span id="cartTotal" class="font-display text-lg text-rose-600">LKR 0</span>
+        </div>
+      </div>
+
+      <button onclick="openCheckoutModal()" class="w-full py-4 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold text-sm uppercase tracking-wider hover:bg-rose-600 dark:hover:bg-rose-600 dark:hover:text-white transition-all shadow-lg flex items-center justify-center gap-2">
+        <span>Proceed to COD Checkout</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ========================================== -->
+  <!-- SRI LANKA CASH-ON-DELIVERY CHECKOUT MODAL  -->
+  <!-- ========================================== -->
+  <div id="checkoutModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/70 backdrop-blur-xs overflow-y-auto">
+    <div class="bg-white dark:bg-brand-cardDark border border-zinc-200 dark:border-zinc-800 rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl my-auto">
+      
+      <!-- Modal Header -->
+      <div class="p-5 sm:p-6 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+        <div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-rose-600">Sri Lanka Islandwide Delivery</span>
+          <h3 class="font-display font-bold text-xl sm:text-2xl">CASH ON DELIVERY ORDER</h3>
+        </div>
+        <button onclick="closeCheckoutModal()" class="p-2 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-500">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <!-- Checkout Form View -->
+      <form id="codForm" onsubmit="submitCodOrder(event)" class="p-5 sm:p-6 space-y-4">
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-1.5">Full Name *</label>
+          <input type="text" id="custName" required placeholder="e.g. Kasun Perera" class="w-full px-4 py-3 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:border-rose-600" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-1.5">Mobile Number (WhatsApp) *</label>
+            <input type="tel" id="custPhone" required placeholder="07X XXX XXXX" pattern="[0-9+\s-]{9,15}" class="w-full px-4 py-3 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:border-rose-600" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-1.5">District *</label>
+            <select id="custDistrict" required class="w-full px-4 py-3 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:border-rose-600">
+              <option value="Colombo">Colombo</option>
+              <option value="Gampaha">Gampaha</option>
+              <option value="Kalutara">Kalutara</option>
+              <option value="Kandy">Kandy</option>
+              <option value="Galle">Galle</option>
+              <option value="Matara">Matara</option>
+              <option value="Kurunegala">Kurunegala</option>
+              <option value="Negombo">Negombo</option>
+              <option value="Jaffna">Jaffna</option>
+              <option value="Anuradhapura">Anuradhapura</option>
+              <option value="Badulla">Badulla</option>
+              <option value="Ratnapura">Ratnapura</option>
+              <option value="Other District">Other District (Islandwide)</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-1.5">Delivery Address *</label>
+          <textarea id="custAddress" required rows="2" placeholder="House No, Street Name, Town / City" class="w-full px-4 py-3 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:border-rose-600"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-1.5">Order Notes / Custom DTF Instructions (Optional)</label>
+          <input type="text" id="custNotes" placeholder="Landmark or custom print details..." class="w-full px-4 py-3 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:border-rose-600" />
+        </div>
+
+        <!-- Payment Method Box -->
+        <div class="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-hand-holding-dollar text-emerald-600 dark:text-emerald-400 text-xl"></i>
+            <div>
+              <p class="text-xs font-bold text-emerald-800 dark:text-emerald-300 uppercase">Cash on Delivery (COD)</p>
+              <p class="text-[11px] text-emerald-700/80 dark:text-emerald-400/80">Pay in cash when your parcel arrives.</p>
+            </div>
+          </div>
+          <span id="modalTotalBadge" class="font-display font-bold text-base text-emerald-700 dark:text-emerald-300">LKR 0</span>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm uppercase tracking-wider transition-all shadow-lg shadow-rose-600/20">
+          Confirm Cash-on-Delivery Order
+        </button>
+      </form>
+
+      <!-- Order Confirmation Success View -->
+      <div id="orderSuccessView" class="hidden p-6 sm:p-8 text-center space-y-4">
+        <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center mx-auto text-3xl">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <h4 class="font-display font-bold text-2xl">ORDER CONFIRMED!</h4>
+        <p class="text-sm text-zinc-600 dark:text-zinc-400">
+          Thank you, <span id="confirmName" class="font-bold text-zinc-900 dark:text-white"></span>! Your Z-Expert Clothing order (<span id="confirmOrderId" class="font-mono font-bold text-rose-600"></span>) is being prepared for dispatch to <span id="confirmDistrict" class="font-semibold"></span>.
+        </p>
+        <div class="p-4 rounded-xl bg-zinc-100 dark:bg-zinc-900 text-xs text-left space-y-1.5 border border-zinc-200 dark:border-zinc-800">
+          <p><span class="text-zinc-500">Payment Method:</span> <strong>Cash on Delivery (COD)</strong></p>
+          <p><span class="text-zinc-500">Amount Due on Delivery:</span> <strong id="confirmAmount" class="text-rose-600"></strong></p>
+          <p><span class="text-zinc-500">Estimated Delivery:</span> <strong>2 – 4 Working Days</strong></p>
+        </div>
+        <button onclick="resetAfterOrder()" class="w-full py-3.5 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold text-sm uppercase tracking-wider">
+          Continue Shopping
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none flex flex-col gap-2"></div>
+
+  <!-- ========================================== -->
+  <!-- APPLICATION LOGIC (JAVASCRIPT)             -->
+  <!-- ========================================== -->
+  <script>
+    // 1. PRODUCT CATALOG DATA (Priced in LKR)
+    const products = [
+      {
+        id: 'zx-01',
+        name: 'Colombo Nights Oversized Tee',
+        category: 'T-Shirts',
+        price: 3450,
+        badge: 'Best Seller',
+        gsm: '240 GSM Combed Cotton',
+        image: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'zx-02',
+        name: 'Obsidian Heavyweight Hoodie',
+        category: 'Hoodies',
+        price: 6850,
+        badge: 'Drop 04',
+        gsm: '380 GSM French Terry',
+        image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'zx-03',
+        name: 'Tactical Utility Cargo Pants',
+        category: 'Streetwear',
+        price: 7500,
+        badge: 'Limited',
+        gsm: 'Ripstop Cotton Twill',
+        image: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'zx-04',
+        name: 'Custom DTF Graphic Boxy Tee',
+        category: 'Custom DTF Prints',
+        price: 3950,
+        badge: 'Custom Print',
+        gsm: 'HD DTF + 240 GSM Tee',
+        image: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'zx-05',
+        name: 'Kandy Mist Acid-Wash Tee',
+        category: 'T-Shirts',
+        price: 3800,
+        badge: 'New',
+        gsm: '240 GSM Vintage Wash',
+        image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'zx-06',
+        name: 'Stealth Zip-Up Street Hoodie',
+        category: 'Hoodies',
+        price: 7200,
+        badge: null,
+        gsm: '360 GSM Fleece Lined',
+        image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'zx-07',
+        name: 'Monochrome Coach Jacket',
+        category: 'Streetwear',
+        price: 8400,
+        badge: 'Hot',
+        gsm: 'Water-Resistant Nylon',
+        image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'zx-08',
+        name: 'Custom DTF Oversized Hoodie',
+        category: 'Custom DTF Prints',
+        price: 7600,
+        badge: 'Custom Print',
+        gsm: 'Back + Chest DTF Print',
+        image: 'https://images.unsplash.com/photo-1578768079052-aa76e52ff62e?auto=format&fit=crop&w=700&q=80'
+      }
+    ];
+
+    // 2. APPLICATION STATE
+    let currentCategory = 'All';
+    let selectedSizes = {}; // Tracks selected size per product ID (defaults to 'L')
+    let cart = JSON.parse(localStorage.getItem('zexpert_cart')) || [];
+    const FREE_SHIPPING_THRESHOLD = 12000;
+    const STANDARD_SHIPPING_LKR = 450;
+
+    // Initialize default sizes to 'L'
+    products.forEach(p => {
+      selectedSizes[p.id] = 'L';
+    });
+
+    // Format currency in LKR
+    function formatLKR(amount) {
+      return 'LKR ' + amount.toLocaleString('en-LK');
+    }
+
+    // 3. THEME TOGGLE (Light / Dark Streetwear Aesthetic)
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const htmlEl = document.documentElement;
+
+    // Check saved theme or system preference
+    if (localStorage.getItem('zexpert_theme') === 'dark' || (!localStorage.getItem('zexpert_theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      htmlEl.classList.add('dark');
+      themeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      htmlEl.classList.toggle('dark');
+      const isDark = htmlEl.classList.contains('dark');
+      localStorage.setItem('zexpert_theme', isDark ? 'dark' : 'light');
+      themeIcon.classList.toggle('fa-moon', !isDark);
+      themeIcon.classList.toggle('fa-sun', isDark);
+    });
+
+    // 4. RENDER PRODUCTS & FILTERING
+    function filterProducts(category) {
+      currentCategory = category;
+
+      // Update active button styling
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        if (btn.dataset.category === category) {
+          btn.className = 'filter-btn active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-sm';
+        } else {
+          btn.className = 'filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-zinc-200/70 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-300 dark:hover:bg-zinc-700';
+        }
+      });
+
+      renderProducts();
+    }
+
+    function selectProductSize(productId, size) {
+      selectedSizes[productId] = size;
+      // Update UI buttons for this product card
+      ['M', 'L', 'XL', 'XXL'].forEach(s => {
+        const btn = document.getElementById(`size-${productId}-${s}`);
+        if (btn) {
+          if (s === size) {
+            btn.className = 'w-9 h-8 rounded-lg text-xs font-bold border border-zinc-900 bg-zinc-900 text-white dark:border-white dark:bg-white dark:text-zinc-900 transition-all';
+          } else {
+            btn.className = 'w-9 h-8 rounded-lg text-xs font-semibold border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-500 transition-all';
+          }
+        }
+      });
+    }
+
+    function renderProducts() {
+      const grid = document.getElementById('productGrid');
+      const filtered = currentCategory === 'All'
+        ? products
+        : products.filter(p => p.category === currentCategory);
+
+      grid.innerHTML = filtered.map(product => {
+        const activeSize = selectedSizes[product.id] || 'L';
+        const sizes = ['M', 'L', 'XL', 'XXL'];
+
+        return `
+          <div class="group bg-white dark:bg-brand-cardDark rounded-2xl border border-zinc-200/90 dark:border-zinc-800 overflow-hidden flex flex-col justify-between hover:shadow-xl hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300">
+            <div>
+              <!-- Image Wrapper -->
+              <div class="relative aspect-[4/5] bg-zinc-100 dark:bg-zinc-900 overflow-hidden">
+                <img 
+                  src="${product.image}" 
+                  onerror="this.src='https://placehold.co/600x750/18181b/ffffff?text=${encodeURIComponent(product.name)}'"
+                  alt="${product.name}" 
+                  class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                />
+                ${product.badge ? `
+                  <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-zinc-950/85 text-white backdrop-blur-xs text-[11px] font-bold uppercase tracking-wider">
+                    ${product.badge}
+                  </span>
+                ` : ''}
+                <span class="absolute bottom-3 left-3 px-2.5 py-1 rounded-md bg-white/90 dark:bg-zinc-950/85 text-zinc-800 dark:text-zinc-200 text-[10px] font-semibold">
+                  ${product.gsm}
+                </span>
+              </div>
+
+              <!-- Product Info -->
+              <div class="p-4 sm:p-5 pb-3">
+                <p class="text-[11px] font-semibold uppercase tracking-wider text-rose-600 mb-1">${product.category}</p>
+                <h3 class="font-display font-bold text-lg leading-snug line-clamp-1">${product.name}</h3>
+                <p class="font-display font-bold text-base text-zinc-900 dark:text-zinc-100 mt-1">${formatLKR(product.price)}</p>
+              </div>
+            </div>
+
+            <!-- Size Selector & Add to Cart -->
+            <div class="p-4 sm:p-5 pt-0 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-medium text-zinc-500 dark:text-zinc-400">Size:</span>
+                <div class="flex items-center gap-1.5">
+                  ${sizes.map(size => `
+                    <button 
+                      id="size-${product.id}-${size}"
+                      onclick="selectProductSize('${product.id}', '${size}')"
+                      class="${size === activeSize 
+                        ? 'w-9 h-8 rounded-lg text-xs font-bold border border-zinc-900 bg-zinc-900 text-white dark:border-white dark:bg-white dark:text-zinc-900 transition-all' 
+                        : 'w-9 h-8 rounded-lg text-xs font-semibold border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-500 transition-all'}"
+                    >
+                      ${size}
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+
+              <button 
+                onclick="addToCart('${product.id}')"
+                class="w-full py-3 rounded-xl bg-zinc-900 dark:bg-zinc-800 hover:bg-rose-600 dark:hover:bg-rose-600 text-white font-semibold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2"
+              >
+                <i class="fa-solid fa-plus"></i>
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // 5. SHOPPING CART LOGIC
+    function saveCart() {
+      localStorage.setItem('zexpert_cart', JSON.stringify(cart));
+      updateCartUI();
+    }
+
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      const size = selectedSizes[productId] || 'L';
+      if (!product) return;
+
+      const existingIndex = cart.findIndex(item => item.id === productId && item.size === size);
+      if (existingIndex > -1) {
+        cart[existingIndex].qty += 1;
+      } else {
+        cart.push({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          size: size,
+          qty: 1
+        });
+      }
+
+      saveCart();
+      showToast(`Added ${product.name} (${size}) to cart`);
+    }
+
+    function updateQuantity(index, delta) {
+      if (!cart[index]) return;
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      saveCart();
+    }
+
+    function removeCartItem(index) {
+      cart.splice(index, 1);
+      saveCart();
+    }
+
+    function calculateTotals() {
+      const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      const shipping = subtotal === 0 ? 0 : (subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : STANDARD_SHIPPING_LKR);
+      const total = subtotal + shipping;
+      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      return { subtotal, shipping, total, totalCount };
+    }
+
+    function updateCartUI() {
+      const { subtotal, shipping, total, totalCount } = calculateTotals();
+
+      // Update header badge & drawer count
+      document.getElementById('cartBadge').textContent = totalCount;
+      document.getElementById('drawerItemCount').textContent = `${totalCount} ${totalCount === 1 ? 'item' : 'items'}`;
+
+      // Update free shipping progress bar
+      const progressPercent = Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD) * 100);
+      document.getElementById('shippingProgressBar').style.width = `${progressPercent}%`;
+      const remaining = FREE_SHIPPING_THRESHOLD - subtotal;
+      document.getElementById('shippingProgressText').textContent = remaining > 0
+        ? `Add ${formatLKR(remaining)} more for FREE Islandwide Delivery!`
+        : `🎉 You've unlocked FREE Islandwide COD Delivery!`;
+
+      const container = document.getElementById('cartItemsContainer');
+      const footer = document.getElementById('cartFooter');
+
+      if (cart.length === 0) {
+        footer.classList.add('hidden');
+        container.innerHTML = `
+          <div class="h-full flex flex-col items-center justify-center text-center py-12 space-y-3">
+            <div class="w-16 h-16 rounded-2xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-400 text-2xl">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+            <h4 class="font-display font-bold text-lg">Your cart is empty</h4>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 max-w-xs">Looks like you haven't added any Z-Expert streetwear pieces yet.</p>
+            <button onclick="toggleCart(false)" class="mt-2 px-5 py-2.5 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs font-bold uppercase tracking-wider">
+              Browse Drops
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      footer.classList.remove('hidden');
+      document.getElementById('cartSubtotal').textContent = formatLKR(subtotal);
+      document.getElementById('cartShipping').textContent = shipping === 0 ? 'FREE' : formatLKR(shipping);
+      document.getElementById('cartTotal').textContent = formatLKR(total);
+
+      container.innerHTML = cart.map((item, idx) => `
+        <div class="flex gap-3.5 p-3 rounded-2xl bg-zinc-50 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800">
+          <img 
+            src="${item.image}" 
+            onerror="this.src='https://placehold.co/150x180/18181b/ffffff?text=Z-EXPERT'"
+            alt="${item.name}" 
+            class="w-20 h-24 rounded-xl object-cover shrink-0 bg-zinc-200 dark:bg-zinc-800"
+          />
+          <div class="flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-start justify-between gap-2">
+                <h5 class="font-display font-bold text-sm leading-tight">${item.name}</h5>
+                <button onclick="removeCartItem(${idx})" aria-label="Remove item" class="text-zinc-400 hover:text-rose-600 text-xs p-1">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+              <span class="inline-block mt-1 px-2 py-0.5 rounded-md bg-zinc-200/80 dark:bg-zinc-800 text-[11px] font-bold">
+                Size: ${item.size}
+              </span>
+            </div>
+
+            <div class="flex items-center justify-between mt-2">
+              <span class="font-bold text-sm">${formatLKR(item.price * item.qty)}</span>
+              <div class="flex items-center gap-2 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg px-1.5 py-1">
+                <button onclick="updateQuantity(${idx}, -1)" class="w-6 h-6 flex items-center justify-center text-xs hover:text-rose-600 font-bold">-</button>
+                <span class="text-xs font-bold min-w-[16px] text-center">${item.qty}</span>
+                <button onclick="updateQuantity(${idx}, 1)" class="w-6 h-6 flex items-center justify-center text-xs hover:text-rose-600 font-bold">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // 6. DRAWER & MODAL CONTROLS
+    function toggleCart(open) {
+      const overlay = document.getElementById('cartOverlay');
+      const drawer = document.getElementById('cartDrawer');
+
+      if (open) {
+        overlay.classList.remove('hidden');
+        setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+        drawer.classList.remove('translate-x-full');
+      } else {
+        overlay.classList.add('opacity-0');
+        drawer.classList.add('translate-x-full');
+        setTimeout(() => overlay.classList.add('hidden'), 300);
+      }
+    }
+
+    function openCheckoutModal() {
+      if (cart.length === 0) return;
+      toggleCart(false);
+
+      const { total } = calculateTotals();
+      document.getElementById('modalTotalBadge').textContent = formatLKR(total);
+      document.getElementById('codForm').classList.remove('hidden');
+      document.getElementById('orderSuccessView').classList.add('hidden');
+
+      const modal = document.getElementById('checkoutModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeCheckoutModal() {
+      const modal = document.getElementById('checkoutModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function submitCodOrder(event) {
+      event.preventDefault();
+      const name = document.getElementById('custName').value.trim();
+      const district = document.getElementById('custDistrict').value;
+      const { total } = calculateTotals();
+      const orderId = 'ZX-' + Math.floor(100000 + Math.random() * 900000);
+
+      document.getElementById('confirmName').textContent = name;
+      document.getElementById('confirmOrderId').textContent = orderId;
+      document.getElementById('confirmDistrict').textContent = district;
+      document.getElementById('confirmAmount').textContent = formatLKR(total);
+
+      document.getElementById('codForm').classList.add('hidden');
+      document.getElementById('orderSuccessView').classList.remove('hidden');
+
+      // Clear cart after successful COD order
+      cart = [];
+      saveCart();
+    }
+
+    function resetAfterOrder() {
+      document.getElementById('codForm').reset();
+      closeCheckoutModal();
+    }
+
+    // 7. TOAST NOTIFICATION HELPER
+    function showToast(message) {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = 'px-4 py-3 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs font-bold shadow-xl flex items-center gap-2 transition-all duration-300 transform translate-y-2 opacity-0';
+      toast.innerHTML = `<i class="fa-solid fa-circle-check text-rose-500"></i> <span>${message}</span>`;
+      container.appendChild(toast);
+
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-2', 'opacity-0');
+      });
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => toast.remove(), 300);
+      }, 2400);
+    }
+
+    // Initialize App on Load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderProducts();
+      updateCartUI();
+    });
+  </script>
+</body>
+</html>
